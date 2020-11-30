@@ -1,0 +1,4 @@
+C:\Dev\MatzeLib\MatzeLib\ThirdParty\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.pdb
+C:\Dev\MatzeLib\MatzeLib\ThirdParty\GLFW\bin-int\Debug-windows-x86_64\GLFW\GLFW.pdb
+C:\Users\nilss\Desktop\MatzeLib\Calculator\ThirdParty\GLFW\bin\Debug-windows-x86_64\GLFW\GLFW.pdb
+C:\Users\nilss\Desktop\MatzeLib\Calculator\ThirdParty\GLFW\bin-int\Debug-windows-x86_64\GLFW\GLFW.pdb
