@@ -4,7 +4,7 @@
 Application::Application(const std::string &title, uint32_t width, uint32_t height)
 {
 	m_Window = std::make_unique<Util::Window>(width, height, title);
-	m_Window->SetIcon("CalculatorIcon.png");
+	m_Window->SetIcon("res/Icons/CalculatorIcon.png");
 
 	// Util::Window::HideConsole();
 
@@ -15,9 +15,9 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 	OpenSansBold = ImGui::GetIO().Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Bold.ttf", 32.0f);
 	ImGui::GetIO().FontDefault = openSansRegular;
 
-	calculatorIcon = Util::LoadTexture("CalculatorIcon.png");
-	settingsIcon = Util::LoadTexture("SettingsIcon.png");
-	vectorsIcon = Util::LoadTexture("VectorsIcon.png");
+	calculatorIcon = Util::LoadTexture("res/Icons/CalculatorIcon.png");
+	settingsIcon = Util::LoadTexture("res/Icons/SettingsIcon.png");
+	vectorsIcon = Util::LoadTexture("res/Icons/VectorsIcon.png");
 }
 
 Application::~Application()

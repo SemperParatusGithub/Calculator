@@ -106,8 +106,8 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Util\ImGuiBuild.cpp" />
     <ClCompile Include="src\Util\ImGuiUtil.cpp" />
-    <ClCompile Include="src\Util\stb_image.cpp" />
     <ClCompile Include="src\Util\Window.cpp" />
+    <ClCompile Include="src\Util\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ThirdParty\GLFW\GLFW.vcxproj">
