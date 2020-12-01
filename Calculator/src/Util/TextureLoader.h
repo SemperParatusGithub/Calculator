@@ -9,19 +9,32 @@ namespace Util
 	{
 		stbi_set_flip_vertically_on_load(1);
 		unsigned int textureID;
-		int width, height, bpp;
-		unsigned char *buffer = stbi_load(filepath.c_str(), &width, &height, &bpp, 4);
+		int width, height, channels;
+		unsigned char *buffer = stbi_load(filepath.c_str(), &width, &height, &channels, 4);
+
+
+		GLenum internalFormat = 0, dataFormat = 0;
+		if (channels == 4)
+		{
+			internalFormat = GL_RGBA8;
+			dataFormat = GL_RGBA;
+		}
+		else if (channels == 3)
+		{
+			internalFormat = GL_RGB8;
+			dataFormat = GL_RGB;
+		}
 
 		glCreateTextures(GL_TEXTURE_2D, 1, &textureID);
-		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTextureStorage2D(textureID, 1, internalFormat, width, height);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTextureParameteri(textureID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTextureParameteri(textureID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glTextureParameteri(textureID, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTextureParameteri(textureID, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		glTextureSubImage2D(textureID, 0, 0, 0, width, height, dataFormat, GL_UNSIGNED_BYTE, buffer);
 
 		if (buffer)
 			stbi_image_free(buffer);

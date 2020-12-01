@@ -16,8 +16,8 @@ private:
 private:
 	void Run();
 
-	void InitImGui();
 	void UpdateImGui();
+	void DrawConsole();
 
 	friend int ::main(int argc, char *argv[]);
 
@@ -25,10 +25,28 @@ private:
 	std::unique_ptr<Util::Window> m_Window;
 
 	ImFont *m_TitleFont = nullptr;
+	ImFont *OpenSansBold;
+
+	bool temp = false;
 
 	bool windowOpen = true;
 	int selected = 1;
 
 	float vec1[3] = { 0, 0, 0 };
 	float vec2[3] = { 0, 0, 0 };
+
+	bool generalOpen = false;
+	bool settingsOpen = false;
+	bool vectorsOpen = false;
+
+	bool enable_7m = false;  // default value, the button is disabled 
+	float b = 1.0f; //  test whatever color you need from imgui_demo.cpp e.g.
+	float c = 0.5f; // 
+	int i = 3;
+
+	bool demoWindow = false;
+
+	unsigned int calculatorIcon = 0;
+	unsigned int settingsIcon = 0;
+	unsigned int vectorsIcon = 0;
 };

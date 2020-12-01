@@ -2,3 +2,5 @@ C:\Dev\MatzeLib\MatzeLib\ThirdParty\Glad\bin\Debug-windows-x86_64\Glad\Glad.pdb
 C:\Dev\MatzeLib\MatzeLib\ThirdParty\Glad\bin-int\Debug-windows-x86_64\Glad\Glad.pdb
 C:\Users\nilss\Desktop\MatzeLib\Calculator\ThirdParty\Glad\bin\Debug-windows-x86_64\Glad\Glad.pdb
 C:\Users\nilss\Desktop\MatzeLib\Calculator\ThirdParty\Glad\bin-int\Debug-windows-x86_64\Glad\Glad.pdb
+C:\Users\nilss\Desktop\Calculator\Calculator\ThirdParty\Glad\bin\Debug-windows-x86_64\Glad\Glad.pdb
+C:\Users\nilss\Desktop\Calculator\Calculator\ThirdParty\Glad\bin-int\Debug-windows-x86_64\Glad\Glad.pdb

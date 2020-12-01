@@ -4,10 +4,11 @@
 #include <GLFW/glfw3.h>
 
 #include <Windows.h>
+#include <algorithm>
 
 namespace Util
 {
-	Window::Window(uint32_t width, uint32_t height, const std::string &title)
+	Window::Window(uint32_t width, uint32_t height, const std::string &title) 
 	{
 		if (!glfwInit())
 			throw std::runtime_error("Failed to initialize GLFW!");
@@ -22,6 +23,8 @@ namespace Util
 
 		if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
 			throw std::runtime_error("Failed to initialize Glad!");
+
+		glfwSetWindowSizeLimits(m_Window, 800, 600, GLFW_DONT_CARE, GLFW_DONT_CARE);
 	}
 	Window::~Window()
 	{
