@@ -18,7 +18,10 @@ namespace Util
             int sec = aTime->tm_sec;
 
             std::stringstream ss;
-            ss << hour << ":" << min << ":" << sec;
+
+            ss << ((hour < 10) ? "0" : "") << hour << ":";
+            ss << ((min < 10) ? "0" : "") << min << ":";
+            ss << ((sec < 10) ? "0" : "") << sec;
 
             return ss.str();
         }
