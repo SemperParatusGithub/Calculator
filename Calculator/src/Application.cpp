@@ -1,6 +1,7 @@
 ﻿#include "Application.h"
 #include "Util/Time.h"
 #include "MenuItems/Vectors.h"
+#include "MenuItems/Settings.h"
 
 
 Application::Application(const std::string &title, uint32_t width, uint32_t height)
@@ -12,6 +13,7 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 
 	Util::ImGuiInit(*m_Window);
 	m_MenuBar.RegisterMenuItem<Vectors>("Vectors");
+	m_MenuBar.RegisterMenuItem<Settings>("Settings");
 }
 
 Application::~Application()

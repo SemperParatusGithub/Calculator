@@ -58,7 +58,7 @@ public:
 	{
 		for (auto &[name, item] : m_MenuItems)
 			if (item->IsOpen())
-				item->OnRender();
+				item->OnContentRender();
 	}
 
 	template<typename ItemType>

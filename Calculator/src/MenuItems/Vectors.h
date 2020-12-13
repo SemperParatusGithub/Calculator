@@ -8,7 +8,7 @@ public:
 	Vectors();
 	~Vectors();
 
-	virtual void OnRender() override;
+	virtual void OnContentRender() override;
 
 private:
 	float vec1[3] = { 0, 0, 0 };

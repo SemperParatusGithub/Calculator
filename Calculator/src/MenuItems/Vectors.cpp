@@ -14,7 +14,7 @@ Vectors::~Vectors()
 {
 }
 
-void Vectors::OnRender()
+void Vectors::OnContentRender()
 {
 	ImVec2 buttonSize = ImVec2 { m_WindowSize.x / 35, 0.0f };
 
