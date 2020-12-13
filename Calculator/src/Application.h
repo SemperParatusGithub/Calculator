@@ -7,6 +7,7 @@
 #include "Util/Window.h"
 #include "Util/ImGuiUtil.h"
 #include "Util/TextureLoader.h"
+#include "Util/Time.h"
 
 
 int main(int argc, char *argv[]);

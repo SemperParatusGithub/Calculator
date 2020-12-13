@@ -16,11 +16,17 @@
 
 int main(int argc, char *argv[])
 {
+	Util::Time::StartSession("Startup");
 	Application *App = new Application("Calculator", 1280, 720);
-	
-	App->Run();
+	Util::Time::EndSession();
 
+	Util::Time::StartSession("Runtime");
+	App->Run();
+	Util::Time::EndSession();
+
+	Util::Time::StartSession("Shutdown");
 	delete App;
+	Util::Time::EndSession();
 
 	return EXIT_SUCCESS;
 }
