@@ -1,8 +1,13 @@
 #include "Vectors.h"
+#include "Util/TextureLoader.h"
 
 
 Vectors::Vectors()
 {
+	m_OpenSansRegular = ImGui::GetIO().Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Regular.ttf", 32.0f);
+	m_OpenSansBold = ImGui::GetIO().Fonts->AddFontFromFileTTF("res/fonts/OpenSans/OpenSans-Bold.ttf", 32.0f);
+
+	m_IconID = Util::LoadTexture("res/Icons/VectorsIcon.png");
 }
 
 Vectors::~Vectors()
@@ -20,7 +25,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.8f, 0.1f, 0.15f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.9f, 0.2f, 0.2f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.8f, 0.1f, 0.15f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("x##1", buttonSize)) vec1[0] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);
@@ -30,7 +35,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.8f, 0.1f, 0.15f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.9f, 0.2f, 0.2f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.8f, 0.1f, 0.15f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("x##2", buttonSize)) vec2[0] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);
@@ -39,7 +44,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.f, 0.4f, 0.05f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.1f, 0.5f, 0.15f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.f, 0.4f, 0.05f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("y##1", buttonSize))  vec1[1] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);
@@ -49,7 +54,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.f, 0.4f, 0.05f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.1f, 0.5f, 0.15f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.f, 0.4f, 0.05f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("y##2", buttonSize)) vec2[1] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);
@@ -58,7 +63,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.1f, 0.25f, 0.8f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.2f, 0.35f, 0.9f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.1f, 0.25f, 0.8f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("z##1", buttonSize)) vec1[2] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);
@@ -68,7 +73,7 @@ void Vectors::OnRender()
 	ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.1f, 0.25f, 0.8f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.2f, 0.35f, 0.9f, 1.0f });
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.1f, 0.25f, 0.8f, 1.0f });
-	ImGui::PushFont(OpenSansBold);
+	ImGui::PushFont(m_OpenSansBold);
 	if (ImGui::Button("z##2", buttonSize)) vec2[2] = 0;
 	ImGui::PopFont();
 	ImGui::PopStyleColor(3);

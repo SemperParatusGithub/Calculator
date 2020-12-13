@@ -13,4 +13,7 @@ public:
 private:
 	float vec1[3] = { 0, 0, 0 };
 	float vec2[3] = { 0, 0, 0 };
+
+	ImFont *m_OpenSansRegular;
+	ImFont *m_OpenSansBold;
 };

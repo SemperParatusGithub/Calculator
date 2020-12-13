@@ -2,7 +2,7 @@
 #include <memory>
 #include <unordered_map>
 
-#include "MenuItems/Vectors.h"
+#include "MenuItems/MenuBar.h"
 
 #include "Util/Window.h"
 #include "Util/ImGuiUtil.h"
@@ -25,16 +25,8 @@ private:
 
 private:
 	std::unique_ptr<Util::Window> m_Window;
-	std::unordered_map<std::string, std::shared_ptr<MenuItem>> m_MenuItems;
-
-	bool generalOpen = false;
-	bool settingsOpen = false;
-	bool vectorsOpen = false;
+	MenuBar m_MenuBar;
 
 	bool showDemoWindow = false;
 	bool consoleOpen = false;
-
-	unsigned int calculatorIcon = 0;
-	unsigned int settingsIcon = 0;
-	unsigned int vectorsIcon = 0;
 };

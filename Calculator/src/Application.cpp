@@ -1,5 +1,6 @@
 ﻿#include "Application.h"
 #include "Util/Time.h"
+#include "MenuItems/Vectors.h"
 
 
 Application::Application(const std::string &title, uint32_t width, uint32_t height)
@@ -10,12 +11,7 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 	// Util::Window::HideConsole();
 
 	Util::ImGuiInit(*m_Window);
-
-	calculatorIcon = Util::LoadTexture("res/Icons/CalculatorIcon.png");
-	settingsIcon = Util::LoadTexture("res/Icons/SettingsIcon.png");
-	vectorsIcon = Util::LoadTexture("res/Icons/VectorsIcon.png");
-
-	m_MenuItems["Vectors"] = std::make_shared<Vectors>();
+	m_MenuBar.RegisterMenuItem<Vectors>("Vectors");
 }
 
 Application::~Application()
@@ -75,74 +71,16 @@ void Application::Update()
 			ImGui::Text("%s", Util::Time::GetTimeFormated().c_str());
 			ImGui::EndMenuBar();
 		}
-		ImGui::BeginChild("VerticalMenu", ImVec2 { 58.0f, 0.0f }, false, ImGuiWindowFlags_NoScrollbar);
 
-		ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f);
-		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 50.0f);
-		if (generalOpen)
-		{
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.15f, 0.1505f, 0.151f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			if (ImGui::ImageButton((ImTextureID) calculatorIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-				generalOpen = false;
-			
-			ImGui::PopStyleColor(3);
-		}
-		else {
-			if (ImGui::ImageButton((ImTextureID) calculatorIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-			{
-				generalOpen = true;
-				settingsOpen = vectorsOpen = false;
-			}
-		}
-		if(settingsOpen)
-		{
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.15f, 0.1505f, 0.151f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			if (ImGui::ImageButton((ImTextureID) settingsIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-				settingsOpen = false;
-			
-			ImGui::PopStyleColor(3);
-		}
-		else {
-			if (ImGui::ImageButton((ImTextureID) settingsIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-			{
-				settingsOpen = true;
-				generalOpen = vectorsOpen = false;
-			}
-		}
-		if (vectorsOpen)
-		{
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 0.15f, 0.1505f, 0.151f, 1.0f });
-			ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 0.3f, 0.305f, 0.31f, 1.0f });
-			if (ImGui::ImageButton((ImTextureID) vectorsIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-				vectorsOpen = false;
-
-			ImGui::PopStyleColor(3);
-		}
-		else {
-			if (ImGui::ImageButton((ImTextureID) vectorsIcon, { 50.0f, 50.0f }, ImVec2 { 0, 1 }, ImVec2 { 1, 0 }))
-			{
-				vectorsOpen = true;
-				generalOpen = settingsOpen = false;
-			}
-		}
-		ImGui::PopStyleVar(2);
+		// Menubar
+		ImGui::BeginChild("MenuBar", ImVec2 { 58.0f, 0.0f }, false, ImGuiWindowFlags_NoScrollbar);
+		m_MenuBar.OnUpdate(m_Window->GetSize());
+		m_MenuBar.OnRender();
 		ImGui::EndChild();
 
 		ImGui::SameLine();
 		ImGui::BeginChild("Child", ImVec2 { 0, 0 }, true);
-		if (vectorsOpen)
-		{
-			m_MenuItems["Vectors"]->OnUpdate(m_Window->GetSize());
-			m_MenuItems["Vectors"]->OnRender();
-		}
-		else
-		{
-		}
+		m_MenuBar.OnItemContentRender();
 		ImGui::EndChild();
 
 		ImGui::End();
