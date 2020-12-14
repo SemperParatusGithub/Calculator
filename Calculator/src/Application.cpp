@@ -28,6 +28,7 @@ void Application::Run()
 	while (m_Window->isOpen())
 	{
 		Util::ImGuiBeginFrame();
+		Util::Time::s_FrameCount += 1;
 
 		m_Window->Update();
 		m_Window->Clear();
@@ -92,5 +93,6 @@ void Application::Update()
 		// Temporary
 		if(showDemoWindow)
 			ImGui::ShowDemoWindow();
+
 	}
 }

@@ -3,6 +3,7 @@
 #include <unordered_map>
 
 #include "MenuItems/MenuBar.h"
+#include "LogConsole.h"
 
 #include "Util/Window.h"
 #include "Util/ImGuiUtil.h"
