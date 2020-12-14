@@ -12,10 +12,22 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 
 	// Util::Window::HideConsole();
 
+#ifdef _DEBUG
+	consoleOpen = true;
+#else
+	consoleOpen = false;
+#endif 
+
+
 	Util::ImGuiInit(*m_Window);
 	m_MenuBar.RegisterMenuItem<Vectors>("Vectors");
+	m_Console.AddMessage("Registering MenuItem: Vectors");
+
 	m_MenuBar.RegisterMenuItem<Settings>("Settings");
+	m_Console.AddMessage("Registering MenuItem: Vectors");
+
 	m_MenuBar.RegisterMenuItem<Converter>("Converter");
+	m_Console.AddMessage("Registering MenuItem: Vectors");
 }
 
 Application::~Application()
@@ -25,6 +37,9 @@ Application::~Application()
 
 void Application::Run()
 {
+	int a = 5;
+	m_Console.AddMessage("Hello World: %d", a);
+
 	while (m_Window->isOpen())
 	{
 		Util::ImGuiBeginFrame();
@@ -90,9 +105,8 @@ void Application::Update()
 
 		ImGui::End();
 
-		// Temporary
 		if(showDemoWindow)
-			ImGui::ShowDemoWindow();
-
+			ImGui::ShowDemoWindow(&showDemoWindow);
 	}
+	m_Console.Update(&consoleOpen);
 }

@@ -28,7 +28,8 @@ private:
 private:
 	std::unique_ptr<Util::Window> m_Window;
 	MenuBar m_MenuBar;
+	LogConsole m_Console;
 
 	bool showDemoWindow = false;
-	bool consoleOpen = false;
+	bool consoleOpen;
 };
