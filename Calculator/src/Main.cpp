@@ -2,14 +2,14 @@
 
 /* -------------------------------------------------------------------------*
  *  Taschenrechner Nils Schlager 3BHBG                                      *
- *	https://github.com/SemperParatusGithub/Taschenrechner                   *
+ *  https://github.com/SemperParatusGithub/Taschenrechner                   *
  * -------------------------------------------------------------------------*
  *  verwendete Bibliotheken	    Links:                                      *
  * -------------------------------------------------------------------------*
- * 	 Dear ImGui                 https://github.com/ocornut/imgui            *
- * 	 stb_image                  https://github.com/nothings/stb             *
- * 	 GLFW                       https://www.glfw.org/                       *
- * 	 Glad                       https://glad.dav1d.de/                      *
+ *   Dear ImGui                 https://github.com/ocornut/imgui            *
+ *   stb_image                  https://github.com/nothings/stb             *
+ *   GLFW                       https://www.glfw.org/                       *
+ *   Glad                       https://glad.dav1d.de/                      *
  *   GLM                        https://glm.g-truc.net/0.9.2/api/index.html *
  * ------------------------------------------------------------------------ */
 
