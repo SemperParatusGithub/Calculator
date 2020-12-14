@@ -8,38 +8,71 @@
 #include "Util/Time.h"
 #include <imgui.h>
 
+enum Severity
+{
+	Info, Warn, Error, Critical
+};
 
 class LogConsole
 {
 public:
+	typedef struct
+	{
+		Severity severity;
+		std::string time;
+		std::string message;
+	}LogElem;
+
 	// Displays everything and flushes the Buffer
 	void Update(bool *open)
 	{
 		if (*open)
 		{
-			ImGui::Begin("Console", open, ImGuiWindowFlags_NoDocking);
+			ImGui::Begin("Console", open, ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 			ImGui::SetWindowFocus();
-			for (auto &buffer : m_Buffer)
-				ImGui::Text(buffer.c_str());
+
+			for (auto &elem : m_Buffer)
+			{
+				std::string msg = elem.time + SeverityToString(elem.severity) + elem.message;
+				ImGui::Text(msg.c_str());
+				ImGui::PopStyleColor(1);
+			}
+
 			ImGui::SetScrollHereY(1.0f);
 			ImGui::End();
 		}
 	}
 
-	template<typename ... Args>
-	void AddMessage(Args && ... args)
+	template<Severity severityType, typename ... Args>
+	void Log(Args && ... args)
 	{
 		char *buffer = new char[256];
 		sprintf_s(buffer, 255, std::forward<Args>(args)...);
 
-		std::string buf(buffer);
-		std::string bufferElement = "[" + Util::Time::GetTimeFormated() + "]: " + buf;
+		LogElem elem = {
+			severityType,
+			"[" + Util::Time::GetTimeFormated() + "]",
+			std::string(buffer)
+		};
 
-		m_Buffer.push_back(bufferElement);
+		m_Buffer.push_back(elem);
 	}
 
 	void Clear() { m_Buffer.clear(); }
 
 private:
-	std::vector<std::string> m_Buffer;
+	std::string SeverityToString(Severity sev)
+	{
+		switch (sev)
+		{
+			case Severity::Info:	 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.10f, 0.80f, 0.40f, 1.00f));	return "[Info]: ";
+			case Severity::Warn:	 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.00f, 0.83f, 0.00f, 1.00f));	return "[Warn]: ";
+			case Severity::Error:	 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.00f, 0.40f, 0.40f, 1.00f));	return "[Error]: ";
+			case Severity::Critical: ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.40f, 0.00f, 0.00f, 1.00f));	return "[Critical]: ";
+		}
+		return "";
+	}
+
+private:
+	std::vector<LogElem> m_Buffer;
 };
