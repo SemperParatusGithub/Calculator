@@ -4,7 +4,7 @@
  *  Taschenrechner Nils Schlager 3BHBG                                      *
  *  https://github.com/SemperParatusGithub/Taschenrechner                   *
  * -------------------------------------------------------------------------*
- *  verwendete Bibliotheken	    Links:                                      *
+ *  verwendete Bibliotheken     Links:                                      *
  * -------------------------------------------------------------------------*
  *   Dear ImGui                 https://github.com/ocornut/imgui            *
  *   stb_image                  https://github.com/nothings/stb             *
