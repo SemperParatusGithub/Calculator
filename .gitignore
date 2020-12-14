@@ -2,7 +2,6 @@
 bin/
 bin-int/
 !ThirdParty/bin/premake
-Scripts/build
 
 # Visual Studio files and folder
 .vs/
