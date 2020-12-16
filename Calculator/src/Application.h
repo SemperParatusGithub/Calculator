@@ -31,5 +31,5 @@ private:
 	LogConsole m_Console;
 
 	bool showDemoWindow = false;
-	bool consoleOpen;
+	bool consoleOpen = false;
 };

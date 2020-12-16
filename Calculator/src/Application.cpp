@@ -3,6 +3,7 @@
 #include "MenuItems/Vectors.h"
 #include "MenuItems/Settings.h"
 #include "MenuItems/Converter.h"
+#include "MenuItems/EquationSystem.h"
 
 
 Application::Application(const std::string &title, uint32_t width, uint32_t height)
@@ -11,12 +12,6 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 	m_Window->SetIcon("res/Icons/CalculatorIcon.png");
 
 	// Util::Window::HideConsole();
-
-#ifdef _DEBUG
-	consoleOpen = true;
-#else
-	consoleOpen = false;
-#endif 
 
 	Util::ImGuiInit(*m_Window);
 
@@ -27,7 +22,10 @@ Application::Application(const std::string &title, uint32_t width, uint32_t heig
 	m_Console.Log<Info>("Registering MenuItem: Settings");
 
 	m_MenuBar.RegisterMenuItem<Converter>("Converter");
-	m_Console.Log<Info>("Registering MenuItem: Converter");
+	m_Console.Log<Info>("Registering MenuItem: Converter");	
+	
+	m_MenuBar.RegisterMenuItem<EquationSystem>("EquationSystem");
+	m_Console.Log<Info>("Registering MenuItem: EquationSystem");
 }
 
 Application::~Application()
@@ -37,9 +35,6 @@ Application::~Application()
 
 void Application::Run()
 {
-	int a = 5;
-	m_Console.Log<Info>("Hello World: %d", a);
-
 	while (m_Window->isOpen())
 	{
 		Util::ImGuiBeginFrame();
